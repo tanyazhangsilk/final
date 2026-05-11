@@ -1,0 +1,36 @@
+<navigation-bar title="发票记录" back="{{true}}" color="black" background="#f4f8fb"></navigation-bar>
+<view class="records-page">
+  <view class="empty-card" wx:if="{{records.length === 0}}">
+    <text class="empty-card__title">暂无发票记录</text>
+    <text class="empty-card__desc">完成充电结算后，可在订单页发起开票申请。</text>
+  </view>
+
+  <view class="record-card panel-card" wx:for="{{records}}" wx:key="id">
+    <view class="record-header">
+      <view>
+        <text class="record-order">订单号 {{item.orderNo}}</text>
+        <text class="record-time">申请时间 {{item.applyTime}}</text>
+      </view>
+      <text class="status-tag {{item.status}}">{{item.statusText}}</text>
+    </view>
+
+    <view class="record-body">
+      <text class="record-line">发票类型：{{item.typeText}}</text>
+      <text class="record-line">发票抬头：{{item.title}}</text>
+      <text class="record-line">接收邮箱：{{item.email}}</text>
+      <text class="record-line">金额：￥{{item.amountText}}</text>
+      <text class="record-line">备注：{{item.note}}</text>
+    </view>
+
+    <view class="progress-card">
+      <text class="progress-title">处理进度</text>
+      <text class="progress-desc">{{item.progressText}}</text>
+      <text class="reject-desc" wx:if="{{item.rejectReason}}">驳回原因：{{item.rejectReason}}</text>
+    </view>
+
+    <view class="record-footer" catchtap="viewAttachment" data-name="{{item.attachmentName}}" data-status="{{item.statusText}}">
+      <text class="record-attachment">附件：{{item.attachmentName}}</text>
+      <text class="record-link">查看文件</text>
+    </view>
+  </view>
+</view>

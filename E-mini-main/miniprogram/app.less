@@ -1,0 +1,154 @@
+page {
+  min-height: 100vh;
+  background: #f4f8fb;
+  color: #0f172a;
+  font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+}
+
+view,
+text,
+button,
+input,
+textarea {
+  box-sizing: border-box;
+}
+
+.app-shell {
+  padding-left: 32rpx;
+  padding-right: 32rpx;
+}
+
+.panel-card {
+  background: #ffffff;
+  border-radius: 30rpx;
+  box-shadow: 0 18rpx 40rpx rgba(15, 23, 42, 0.06);
+}
+
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.section-head__title {
+  color: #0f172a;
+  font-size: 32rpx;
+  font-weight: 700;
+}
+
+.section-head__meta {
+  color: #64748b;
+  font-size: 22rpx;
+}
+
+.status-tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8rpx 18rpx;
+  border-radius: 999rpx;
+  font-size: 22rpx;
+  font-weight: 600;
+}
+
+.status-tag.idle {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.status-tag.busy {
+  background: #fef3c7;
+  color: #b45309;
+}
+
+.status-tag.queue {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.status-tag.fault {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.status-tag.charging {
+  background: #ecfeff;
+  color: #0f766e;
+}
+
+.status-tag.completed,
+.status-tag.success {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.status-tag.pending {
+  background: #fef3c7;
+  color: #b45309;
+}
+
+.status-tag.issued {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.status-tag.abnormal,
+.status-tag.rejected {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.btn-primary,
+.btn-secondary,
+.btn-light,
+.btn-danger {
+  height: 92rpx;
+  line-height: 92rpx;
+  border-radius: 999rpx;
+  border: none;
+  font-size: 30rpx;
+  font-weight: 600;
+}
+
+.btn-primary {
+  color: #ffffff;
+  background: linear-gradient(135deg, #0f766e 0%, #14b8a6 100%);
+}
+
+.btn-secondary {
+  color: #0f766e;
+  background: #e6fffb;
+}
+
+.btn-light {
+  color: #334155;
+  background: #f8fafc;
+}
+
+.btn-danger {
+  color: #ffffff;
+  background: linear-gradient(135deg, #ef4444 0%, #f97316 100%);
+}
+
+.empty-card {
+  padding: 44rpx 32rpx;
+  text-align: center;
+  border-radius: 28rpx;
+  background: #ffffff;
+  box-shadow: 0 18rpx 40rpx rgba(15, 23, 42, 0.05);
+}
+
+.empty-card__title {
+  display: block;
+  color: #0f172a;
+  font-size: 30rpx;
+  font-weight: 700;
+  margin-bottom: 12rpx;
+}
+
+.empty-card__desc {
+  display: block;
+  color: #64748b;
+  font-size: 24rpx;
+  line-height: 1.7;
+}

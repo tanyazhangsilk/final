@@ -1,0 +1,218 @@
+page {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #0f766e 0%, #14b8a6 34%, #f4f8fb 34%, #f4f8fb 100%);
+}
+
+.monitor-page {
+  /* 底部留白，避免「结束充电」被安全区或长内容挡住 */
+  padding: calc(var(--status-bar-height, 0) + 86rpx) 32rpx calc(200rpx + env(safe-area-inset-bottom, 0px));
+}
+
+.monitor-page .btn-danger {
+  margin-top: 12rpx;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-card,
+.focus-card,
+.metrics-card,
+.billing-card,
+.tips-card {
+  padding: 28rpx;
+  margin-bottom: 22rpx;
+}
+
+.hero-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 18rpx;
+}
+
+.hero-title {
+  display: block;
+  color: #0f172a;
+  font-size: 36rpx;
+  font-weight: 700;
+  margin-bottom: 10rpx;
+}
+
+.hero-desc,
+.hero-order {
+  display: block;
+  color: #64748b;
+  font-size: 24rpx;
+}
+
+.hero-order {
+  margin-top: 12rpx;
+}
+
+.focus-card {
+  background: linear-gradient(135deg, #0f172a 0%, #134e4a 100%);
+  color: #ffffff;
+}
+
+.focus-main {
+  display: flex;
+  flex-direction: column;
+}
+
+.focus-label,
+.focus-desc,
+.battery-label {
+  display: block;
+}
+
+.focus-label {
+  font-size: 24rpx;
+  opacity: 0.9;
+  margin-bottom: 10rpx;
+}
+
+.focus-value {
+  display: block;
+  font-size: 62rpx;
+  font-weight: 700;
+  margin-bottom: 10rpx;
+}
+
+.focus-desc {
+  font-size: 22rpx;
+  line-height: 1.7;
+  opacity: 0.88;
+}
+
+.battery-card {
+  margin-top: 24rpx;
+  padding: 18rpx 22rpx;
+  border-radius: 22rpx;
+  background: rgba(255, 255, 255, 0.08);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.battery-label {
+  font-size: 22rpx;
+  opacity: 0.9;
+}
+
+.battery-value {
+  font-size: 30rpx;
+  font-weight: 700;
+}
+
+.progress-track {
+  margin-top: 20rpx;
+  height: 12rpx;
+  border-radius: 999rpx;
+  background: rgba(255, 255, 255, 0.14);
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: 999rpx;
+  background: linear-gradient(90deg, #5eead4 0%, #ecfeff 100%);
+}
+
+.metrics-card {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16rpx;
+}
+
+.metric-item {
+  padding: 22rpx;
+  border-radius: 24rpx;
+  background: #f8fafc;
+}
+
+.metric-label {
+  display: block;
+  color: #64748b;
+  font-size: 22rpx;
+  margin-bottom: 10rpx;
+}
+
+.metric-value {
+  display: block;
+  color: #0f172a;
+  font-size: 30rpx;
+  font-weight: 700;
+}
+
+.metric-small {
+  font-size: 24rpx;
+  line-height: 1.6;
+}
+
+.billing-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 18rpx;
+  padding: 18rpx 0;
+  border-bottom: 2rpx solid #f1f5f9;
+}
+
+.billing-row:last-of-type {
+  border-bottom: none;
+}
+
+.billing-label {
+  color: #64748b;
+  font-size: 24rpx;
+}
+
+.billing-value {
+  color: #0f172a;
+  font-size: 26rpx;
+  font-weight: 700;
+}
+
+.billing-value.success {
+  color: #15803d;
+}
+
+.billing-note {
+  margin-top: 18rpx;
+  padding: 20rpx;
+  border-radius: 22rpx;
+  background: #f8fafc;
+  color: #475569;
+  font-size: 23rpx;
+  line-height: 1.7;
+}
+
+.tips-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16rpx;
+}
+
+.tip-item {
+  padding: 20rpx;
+  border-radius: 24rpx;
+  background: #ecfeff;
+}
+
+.tip-item.subtle {
+  background: #f8fafc;
+}
+
+.tip-title {
+  display: block;
+  color: #0f172a;
+  font-size: 26rpx;
+  font-weight: 700;
+  margin-bottom: 10rpx;
+}
+
+.tip-desc {
+  display: block;
+  color: #475569;
+  font-size: 23rpx;
+  line-height: 1.7;
+}

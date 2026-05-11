@@ -1,0 +1,59 @@
+<navigation-bar title="发票申请" back="{{true}}" color="black" background="#f4f8fb"></navigation-bar>
+<view class="invoice-page" wx:if="{{order}}">
+  <view class="card panel-card">
+    <view class="section-head">
+      <text class="section-head__title">关联订单</text>
+      <text class="section-head__meta">{{order.paymentStatusText}}</text>
+    </view>
+    <view class="info-row">
+      <text class="label">订单号</text>
+      <text class="value">{{order.orderNo}}</text>
+    </view>
+    <view class="info-row">
+      <text class="label">充电站</text>
+      <text class="value">{{order.stationName}}</text>
+    </view>
+    <view class="info-row">
+      <text class="label">开票金额</text>
+      <text class="value highlight">￥{{order.payableText}}</text>
+    </view>
+  </view>
+
+  <view class="card panel-card">
+    <text class="card-title">发票类型</text>
+    <view class="type-row">
+      <view
+        class="type-item {{invoiceType === item ? 'active' : ''}}"
+        wx:for="{{invoiceTypes}}"
+        wx:key="*this"
+        data-value="{{item}}"
+        bindtap="selectType"
+      >
+        {{item}}
+      </view>
+    </view>
+
+    <view class="field">
+      <text class="field-label">发票抬头</text>
+      <input class="field-input" value="{{title}}" bindinput="onTitleInput" placeholder="请输入发票抬头" />
+    </view>
+    <view class="field">
+      <text class="field-label">接收邮箱</text>
+      <input class="field-input" value="{{email}}" bindinput="onEmailInput" placeholder="请输入电子邮箱" />
+    </view>
+    <view class="field">
+      <text class="field-label">备注</text>
+      <textarea class="field-textarea" value="{{note}}" bindinput="onNoteInput" placeholder="请输入补充说明"></textarea>
+    </view>
+  </view>
+
+  <view class="card panel-card">
+    <text class="card-title">开票须知</text>
+    <view class="notice-item" wx:for="{{notices}}" wx:key="*this">
+      <text class="notice-dot"></text>
+      <text class="notice-text">{{item}}</text>
+    </view>
+  </view>
+
+  <button class="btn-primary" bindtap="submitInvoice">提交申请</button>
+</view>

@@ -1,0 +1,70 @@
+<navigation-bar title="我的订单" back="{{true}}" color="black" background="#f4f8fb"></navigation-bar>
+<view class="orders-page">
+  <view class="tabs-card panel-card">
+    <view
+      class="tab-item {{currentTab === item.key ? 'active' : ''}}"
+      wx:for="{{tabs}}"
+      wx:key="key"
+      data-key="{{item.key}}"
+      bindtap="switchTab"
+    >
+      {{item.label}}
+    </view>
+  </view>
+
+  <view class="empty-card" wx:if="{{empty}}">
+    <text class="empty-card__title">当前没有相关订单</text>
+    <text class="empty-card__desc">完成扫码充电后，订单记录会自动同步到这里。</text>
+  </view>
+
+  <view class="order-card panel-card" wx:for="{{displayOrders}}" wx:key="id" data-id="{{item.id}}" data-status="{{item.status}}" bindtap="onOrderTap">
+    <view class="order-header">
+      <view>
+        <text class="order-name">{{item.stationName}}</text>
+        <text class="order-time">{{item.startTime}} · {{item.durationText}}</text>
+      </view>
+      <text class="status-tag {{item.status}}">{{item.statusText}}</text>
+    </view>
+
+    <view class="status-row">
+      <text class="mini-tag">{{item.paymentStatusText}}</text>
+      <text class="mini-tag">{{item.invoiceStatusText}}</text>
+      <text class="mini-tag">{{item.pileNo}} · {{item.gunNo}}</text>
+    </view>
+
+    <view class="order-summary">
+      <view class="summary-item">
+        <text class="summary-label">电量</text>
+        <text class="summary-value">{{item.powerText}}</text>
+      </view>
+      <view class="summary-item">
+        <text class="summary-label">应付金额</text>
+        <text class="summary-value">￥{{item.payableText}}</text>
+      </view>
+      <view class="summary-item">
+        <text class="summary-label">优惠</text>
+        <text class="summary-value">{{item.discountText}}</text>
+      </view>
+    </view>
+
+    <view class="abnormal-card" wx:if="{{item.abnormalReason}}">
+      <text class="abnormal-title">异常说明</text>
+      <text class="abnormal-desc">{{item.abnormalReason}}</text>
+    </view>
+
+    <view class="order-actions" wx:if="{{item.status === 'completed'}}">
+      <view class="order-action-btn light">订单详情</view>
+      <view class="order-action-btn primary" catchtap="applyInvoice" data-id="{{item.id}}">申请发票</view>
+      <view class="order-action-btn secondary" catchtap="chargeAgain" data-station-id="{{item.stationId}}" data-pile-no="{{item.pileNo}}">再次充电</view>
+    </view>
+
+    <view class="order-actions" wx:if="{{item.status === 'abnormal'}}">
+      <view class="order-action-btn light">订单详情</view>
+      <view class="order-action-btn secondary" catchtap="chargeAgain" data-station-id="{{item.stationId}}" data-pile-no="{{item.pileNo}}">重新充电</view>
+    </view>
+
+    <view class="order-actions" wx:if="{{item.status === 'charging'}}">
+      <view class="order-action-btn primary" catchtap="openCharging" data-id="{{item.id}}">继续查看</view>
+    </view>
+  </view>
+</view>

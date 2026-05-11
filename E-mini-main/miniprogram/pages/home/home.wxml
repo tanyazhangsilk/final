@@ -1,0 +1,117 @@
+<navigation-bar title="" back="{{false}}" color="white" background="transparent"></navigation-bar>
+<scroll-view class="page-scroll" scroll-y type="list">
+  <view class="home-page">
+    <view class="hero-section">
+      <view class="hero-top">
+        <view class="hero-main">
+          <text class="hero-greeting">你好，{{nickname}}</text>
+          <text class="hero-desc">为你汇聚附近电站、优惠活动与高频账户服务</text>
+        </view>
+        <view class="hero-pill">账户状态正常</view>
+      </view>
+
+      <view class="balance-card">
+        <view>
+          <text class="balance-label">可用余额</text>
+          <text class="balance-amount">￥{{balance}}</text>
+          <text class="balance-note">支持钱包充值、订单结算与发票申请</text>
+        </view>
+        <view class="balance-side" bindtap="openCoupons">
+          <text class="balance-side-title">优惠券</text>
+          <text class="balance-side-text">3 张可用</text>
+          <text class="balance-side-sub">查看权益</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="section-card panel-card">
+      <view class="section-head">
+        <text class="section-head__title">核心服务</text>
+        <text class="section-head__meta">常用入口</text>
+      </view>
+      <view class="quick-grid">
+        <view class="quick-item" wx:for="{{quickActions}}" wx:key="id" data-type="{{item.type}}" bindtap="onActionTap">
+          <view class="quick-icon">{{item.icon}}</view>
+          <text class="quick-title">{{item.title}}</text>
+          <text class="quick-desc">{{item.desc}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="section-card panel-card" wx:if="{{recentOrder}}">
+      <view class="section-head">
+        <text class="section-head__title">最近一次充电</text>
+        <text class="section-head__meta" bindtap="openRecentOrder">订单详情</text>
+      </view>
+      <view class="recent-card" bindtap="openRecentOrder">
+        <view class="recent-top">
+          <view>
+            <text class="recent-station">{{recentOrder.stationName}}</text>
+            <text class="recent-time">{{recentOrder.startTime}} · {{recentOrder.durationText}}</text>
+          </view>
+          <text class="status-tag completed">{{recentOrder.statusText}}</text>
+        </view>
+        <view class="recent-metrics">
+          <view class="recent-metric">
+            <text class="recent-label">充电电量</text>
+            <text class="recent-value">{{recentOrder.powerText}}</text>
+          </view>
+          <view class="recent-metric">
+            <text class="recent-label">订单金额</text>
+            <text class="recent-value">￥{{recentOrder.amountText}}</text>
+          </view>
+          <view class="recent-metric">
+            <text class="recent-label">发票状态</text>
+            <text class="recent-value">{{recentOrder.invoiceStatusText}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="section-card panel-card">
+      <view class="section-head">
+        <text class="section-head__title">推荐电站</text>
+        <text class="section-head__meta">优选站点</text>
+      </view>
+      <view class="station-card" wx:for="{{stations}}" wx:key="id" data-id="{{item.id}}" bindtap="onStationTap">
+        <view class="station-top">
+          <view class="station-main">
+            <text class="station-name">{{item.name}}</text>
+            <text class="station-address">{{item.address}}</text>
+          </view>
+          <view class="station-side">
+            <text class="station-distance">{{item.distance}}</text>
+            <text class="station-score">评分 {{item.score}}</text>
+          </view>
+        </view>
+        <view class="station-reasons">
+          <text class="reason-tag" wx:for="{{item.recommendReasons}}" wx:key="*this">{{item}}</text>
+        </view>
+        <view class="station-meta">
+          <text>{{item.operator}}</text>
+          <text>{{item.currentPriceText}}</text>
+          <text>{{item.available}} / {{item.total}} 空闲</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="section-card panel-card">
+      <view class="section-head">
+        <text class="section-head__title">优惠活动</text>
+        <text class="section-head__meta">精选福利</text>
+      </view>
+      <view class="promo-card" wx:for="{{promotions}}" wx:key="id" bindtap="onPromotionTap">
+        <view class="promo-left">
+          <text class="promo-tag">{{item.tag}}</text>
+          <text class="promo-value">{{item.couponValue}}</text>
+        </view>
+        <view class="promo-content">
+          <text class="promo-title">{{item.title}}</text>
+          <text class="promo-desc">{{item.desc}}</text>
+          <text class="promo-expire">{{item.expireText}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</scroll-view>
+<custom-tab-bar />

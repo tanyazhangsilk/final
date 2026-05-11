@@ -1,0 +1,80 @@
+<navigation-bar title="充电中" back="{{true}}" color="white" background="transparent"></navigation-bar>
+<view class="monitor-page">
+  <view class="hero-card panel-card">
+    <view class="hero-top">
+      <view>
+        <text class="hero-title">{{stationName}}</text>
+        <text class="hero-desc">{{pileNo}} · {{gunNo}} · {{statusText}}</text>
+      </view>
+      <text class="status-tag charging">{{statusText}}</text>
+    </view>
+    <text class="hero-order">订单号 {{orderNo}}</text>
+  </view>
+
+  <view class="focus-card panel-card">
+    <view class="focus-main">
+      <text class="focus-label">当前费用</text>
+      <text class="focus-value">￥{{feeText}}</text>
+      <text class="focus-desc">系统实时同步充电时长、电量与计费信息</text>
+    </view>
+    <view class="battery-card">
+      <text class="battery-label">当前电量</text>
+      <text class="battery-value">{{batteryText}}</text>
+    </view>
+    <view class="progress-track">
+      <view class="progress-fill" style="width: {{progressPercent}};"></view>
+    </view>
+  </view>
+
+  <view class="metrics-card panel-card">
+    <view class="metric-item">
+      <text class="metric-label">充电时长</text>
+      <text class="metric-value">{{durationText}}</text>
+    </view>
+    <view class="metric-item">
+      <text class="metric-label">当前功率</text>
+      <text class="metric-value">{{powerText}}</text>
+    </view>
+    <view class="metric-item">
+      <text class="metric-label">累计电量</text>
+      <text class="metric-value">{{energyText}}</text>
+    </view>
+    <view class="metric-item">
+      <text class="metric-label">开始时间</text>
+      <text class="metric-value metric-small">{{startedAt}}</text>
+    </view>
+  </view>
+
+  <view class="billing-card panel-card">
+    <view class="section-head">
+      <text class="section-head__title">计费明细</text>
+      <text class="section-head__meta">实时更新</text>
+    </view>
+    <view class="billing-row">
+      <text class="billing-label">电费</text>
+      <text class="billing-value">￥{{electricityFeeText}}</text>
+    </view>
+    <view class="billing-row">
+      <text class="billing-label">服务费</text>
+      <text class="billing-value">￥{{serviceFeeText}}</text>
+    </view>
+    <view class="billing-row">
+      <text class="billing-label">优惠抵扣</text>
+      <text class="billing-value success">-￥{{discountFeeText}}</text>
+    </view>
+    <view class="billing-note">{{priceNote}}</view>
+  </view>
+
+  <view class="tips-card panel-card">
+    <view class="tip-item">
+      <text class="tip-title">充电提醒</text>
+      <text class="tip-desc">请保持车辆连接稳定，如需离场请先点击“结束充电”。</text>
+    </view>
+    <view class="tip-item subtle">
+      <text class="tip-title">异常提示</text>
+      <text class="tip-desc">若功率波动较大，系统会自动校准并按实际电量结算。</text>
+    </view>
+  </view>
+
+  <button class="btn-danger" bindtap="endCharging">结束充电</button>
+</view>

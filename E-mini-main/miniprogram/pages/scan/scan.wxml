@@ -1,0 +1,74 @@
+<navigation-bar title="扫码充电" back="{{false}}" color="white" background="transparent"></navigation-bar>
+<view class="scan-page">
+  <view class="hero-card">
+    <text class="hero-title">扫码充电</text>
+    <text class="hero-desc">支持扫码识别、手动输入桩号与最近使用记录，快速进入充电服务。</text>
+  </view>
+
+  <view class="scan-card panel-card">
+    <view class="scan-header">
+      <text class="card-title">扫码识别区</text>
+      <text class="status-tag {{scanStatusClass}}">{{scanStatusText}}</text>
+    </view>
+    <view class="scan-board">
+      <view class="scan-frame">
+        <view class="scan-line"></view>
+      </view>
+      <text class="scan-note">当前推荐站点：{{stationName}}</text>
+      <text class="scan-subnote">请将充电桩二维码对准识别框中央区域</text>
+    </view>
+    <button class="btn-primary" bindtap="onQuickScan">立即识别</button>
+  </view>
+
+  <view class="manual-card panel-card">
+    <text class="card-title">手动输入桩号</text>
+    <input
+      class="pile-input"
+      placeholder="请输入充电桩编号，例如 TF-02"
+      value="{{pileNo}}"
+      bindinput="onPileInput"
+    />
+    <view class="quick-pile-row">
+      <text class="quick-label">常用桩号</text>
+      <view class="quick-pill" wx:for="{{quickPiles}}" wx:key="*this" data-value="{{item}}" bindtap="fillQuickPile">
+        {{item}}
+      </view>
+    </view>
+    <view class="qr-action-row" wx:if="{{pileNo}}">
+      <button class="btn-secondary" bindtap="onSearchPile">确认并充电</button>
+      <button class="btn-qr" bindtap="onShowQRCode">二维码</button>
+    </view>
+    <view class="qr-action-row" wx:else>
+      <button class="btn-secondary" bindtap="onSearchPile">确认并充电</button>
+    </view>
+  </view>
+
+  <view class="recent-card panel-card">
+    <text class="card-title">最近使用</text>
+    <view class="recent-item" wx:for="{{recentPiles}}" wx:key="pileNo" data-value="{{item.pileNo}}" bindtap="fillRecentPile">
+      <view>
+        <text class="recent-station">{{item.station}}</text>
+        <text class="recent-pile">桩号 {{item.pileNo}}</text>
+      </view>
+      <text class="recent-action">快速填入</text>
+    </view>
+  </view>
+
+  <view class="notice-card panel-card">
+    <text class="card-title">充电须知</text>
+    <view class="notice-item" wx:for="{{notices}}" wx:key="*this">
+      <text class="notice-dot"></text>
+      <text class="notice-text">{{item}}</text>
+    </view>
+  </view>
+  <!-- QR Code 展示区域 -->
+  <view class="qr-card panel-card" wx:if="{{showQRCode}}">
+    <text class="card-title">充电桩二维码</text>
+    <text class="qr-sn">{{qrSN}}</text>
+    <canvas canvas-id="qrCanvas" class="qr-canvas"></canvas>
+    <image class="qr-image" src="{{qrImagePath}}" wx:if="{{qrImagePath}}" mode="widthFix"></image>
+    <text class="qr-hint">可使用另一设备扫码体验充电流程</text>
+    <button class="btn-close" bindtap="onCloseQRCode">关闭</button>
+  </view>
+</view>
+<custom-tab-bar />

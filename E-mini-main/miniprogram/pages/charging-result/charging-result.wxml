@@ -1,0 +1,83 @@
+<navigation-bar title="充电完成" back="{{true}}" color="black" background="#f4f8fb"></navigation-bar>
+<view class="result-page" wx:if="{{order}}">
+  <view class="success-card panel-card">
+    <view class="success-icon">✓</view>
+    <text class="success-title">本次充电已完成</text>
+    <text class="success-desc">订单信息与费用明细已生成，可继续查看订单或再次充电。</text>
+  </view>
+
+  <view class="settlement-card panel-card">
+    <view class="settlement-top">
+      <view>
+        <text class="settlement-label">实付金额</text>
+        <text class="settlement-amount">￥{{order.payableText}}</text>
+      </view>
+      <text class="status-tag completed">{{order.paymentStatusText}}</text>
+    </view>
+    <view class="settlement-row">
+      <text class="label">优惠抵扣</text>
+      <text class="value">{{order.discountText}}</text>
+    </view>
+    <view class="settlement-row">
+      <text class="label">电费</text>
+      <text class="value">￥{{order.electricityFeeText}}</text>
+    </view>
+    <view class="settlement-row">
+      <text class="label">服务费</text>
+      <text class="value">￥{{order.serviceFeeText}}</text>
+    </view>
+    <view class="settlement-row">
+      <text class="label">发票状态</text>
+      <text class="value">{{order.invoiceStatusText}}</text>
+    </view>
+    <view class="settlement-row">
+      <text class="label">订单状态</text>
+      <text class="value">{{order.statusText}}</text>
+    </view>
+  </view>
+
+  <view class="detail-card panel-card">
+    <view class="detail-row">
+      <text class="label">订单号</text>
+      <text class="value">{{order.orderNo}}</text>
+    </view>
+    <view class="detail-row">
+      <text class="label">充电站</text>
+      <text class="value">{{order.stationName}}</text>
+    </view>
+    <view class="detail-row">
+      <text class="label">开始时间</text>
+      <text class="value">{{order.startTime}}</text>
+    </view>
+    <view class="detail-row">
+      <text class="label">结束时间</text>
+      <text class="value">{{order.endTime}}</text>
+    </view>
+    <view class="detail-row">
+      <text class="label">充电时长</text>
+      <text class="value">{{order.durationText}}</text>
+    </view>
+    <view class="detail-row">
+      <text class="label">充电电量</text>
+      <text class="value">{{order.powerText}}</text>
+    </view>
+    <view class="detail-row">
+      <text class="label">总金额</text>
+      <text class="value">￥{{order.totalAmountText}}</text>
+    </view>
+  </view>
+
+  <view class="invoice-card panel-card">
+    <view>
+      <text class="invoice-title">开票服务</text>
+      <text class="invoice-desc">{{invoiceReady ? '发票已生成，可直接查看记录。' : '支持电子普通发票申请，信息将自动回填。'}}</text>
+    </view>
+    <view class="invoice-link" bindtap="goInvoice">{{invoiceReady ? '查看发票' : '申请发票'}}</view>
+  </view>
+
+  <view class="button-row">
+    <button class="btn-secondary" bindtap="goOrders">查看订单</button>
+    <button class="btn-primary" bindtap="chargeAgain">再次充电</button>
+  </view>
+  <button class="btn-light home-btn" bindtap="goHome">返回首页</button>
+</view>

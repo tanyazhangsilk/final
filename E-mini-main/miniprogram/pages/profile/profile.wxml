@@ -1,0 +1,66 @@
+<navigation-bar title="" back="{{false}}" color="black" background="#f4f8fb"></navigation-bar>
+<scroll-view class="profile-scroll" scroll-y type="list">
+  <view class="profile-page">
+    <view class="user-card panel-card">
+      <view class="user-top">
+        <view class="avatar">E</view>
+        <view class="user-main">
+          <text class="nickname">{{nickname}}</text>
+          <text class="email">{{email}}</text>
+          <view class="user-tags">
+            <text class="user-tag primary">{{level}}</text>
+            <text class="user-tag">{{status}}</text>
+          </view>
+        </view>
+      </view>
+      <view class="asset-row">
+        <view class="asset-item">
+          <text class="asset-value">{{orderCount}}</text>
+          <text class="asset-label">订单数量</text>
+        </view>
+        <view class="asset-item">
+          <text class="asset-value">{{invoiceCount}}</text>
+          <text class="asset-label">发票记录</text>
+        </view>
+        <view class="asset-item">
+          <text class="asset-value">{{coupons}}</text>
+          <text class="asset-label">优惠券</text>
+        </view>
+        <view class="asset-item">
+          <text class="asset-value">￥{{balance}}</text>
+          <text class="asset-label">钱包余额</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="service-card panel-card">
+      <view class="section-head">
+        <text class="section-head__title">常用服务</text>
+        <text class="section-head__meta">账户中心</text>
+      </view>
+      <view class="service-grid">
+        <view class="service-item" wx:for="{{quickServices}}" wx:key="key" data-key="{{item.key}}" bindtap="handleQuickService">
+          <text class="service-title">{{item.title}}</text>
+          <text class="service-desc">{{item.desc}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="menu-card panel-card">
+      <view class="section-head">
+        <text class="section-head__title">更多服务</text>
+        <text class="section-head__meta">账户管理</text>
+      </view>
+      <view class="menu-item" wx:for="{{menuItems}}" wx:key="key" data-key="{{item.key}}" bindtap="handleMenu">
+        <view>
+          <text class="menu-left">{{item.title}}</text>
+          <text class="menu-desc">{{item.desc}}</text>
+        </view>
+        <text class="menu-right">进入</text>
+      </view>
+    </view>
+
+    <button class="btn-danger logout-btn" bindtap="onLogout">退出登录</button>
+  </view>
+</scroll-view>
+<custom-tab-bar />

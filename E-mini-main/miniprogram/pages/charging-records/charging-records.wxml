@@ -1,0 +1,19 @@
+<navigation-bar title="充电记录" back="{{true}}" color="black" background="#fff"></navigation-bar>
+<view class="records-page">
+  <view class="empty-state" wx:if="{{records.length === 0}}">
+    <text class="empty-text">暂无充电记录</text>
+  </view>
+  <view class="record-list" wx:else>
+    <view class="record-item" wx:for="{{records}}" wx:key="id">
+      <view class="record-header">
+        <text class="station-name">{{item.stationName}}</text>
+        <text class="record-status">{{item.status}}</text>
+      </view>
+      <view class="record-detail">
+        <text>充电时长: {{item.duration}}</text>
+        <text>消费: ¥{{item.amount}}</text>
+      </view>
+      <text class="record-time">{{item.time}}</text>
+    </view>
+  </view>
+</view>

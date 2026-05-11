@@ -1,0 +1,172 @@
+page {
+  min-height: 100vh;
+  background: #f4f8fb;
+}
+
+.profile-scroll {
+  height: 100vh;
+}
+
+.profile-page {
+  padding: calc(var(--status-bar-height, 0) + 28rpx) 32rpx 140rpx;
+}
+
+.user-card,
+.service-card,
+.menu-card {
+  padding: 28rpx;
+}
+
+.user-top {
+  display: flex;
+  gap: 20rpx;
+  align-items: center;
+}
+
+.avatar {
+  width: 108rpx;
+  height: 108rpx;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #0f766e 0%, #14b8a6 100%);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 42rpx;
+  font-weight: 700;
+}
+
+.user-main {
+  flex: 1;
+}
+
+.nickname {
+  display: block;
+  color: #0f172a;
+  font-size: 36rpx;
+  font-weight: 700;
+  margin-bottom: 8rpx;
+}
+
+.email {
+  display: block;
+  color: #64748b;
+  font-size: 24rpx;
+  margin-bottom: 12rpx;
+}
+
+.user-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10rpx;
+}
+
+.user-tag {
+  padding: 8rpx 16rpx;
+  border-radius: 999rpx;
+  background: #f1f5f9;
+  color: #475569;
+  font-size: 21rpx;
+}
+
+.user-tag.primary {
+  background: #ecfeff;
+  color: #0f766e;
+}
+
+.asset-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14rpx;
+  margin-top: 24rpx;
+}
+
+.asset-item {
+  padding: 20rpx;
+  border-radius: 24rpx;
+  background: #f8fafc;
+}
+
+.asset-value {
+  display: block;
+  color: #0f766e;
+  font-size: 30rpx;
+  font-weight: 700;
+  margin-bottom: 8rpx;
+}
+
+.asset-label {
+  display: block;
+  color: #64748b;
+  font-size: 22rpx;
+}
+
+.service-card,
+.menu-card {
+  margin-top: 22rpx;
+}
+
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14rpx;
+  margin-top: 20rpx;
+}
+
+.service-item {
+  padding: 20rpx;
+  border-radius: 24rpx;
+  background: linear-gradient(180deg, #f0fdfa 0%, #f8fafc 100%);
+}
+
+.service-title {
+  display: block;
+  color: #0f172a;
+  font-size: 28rpx;
+  font-weight: 700;
+  margin-bottom: 8rpx;
+}
+
+.service-desc {
+  display: block;
+  color: #64748b;
+  font-size: 22rpx;
+  line-height: 1.6;
+}
+
+.menu-item {
+  display: flex;
+  justify-content: space-between;
+  gap: 16rpx;
+  align-items: center;
+  padding: 22rpx 0;
+  border-bottom: 2rpx solid #f1f5f9;
+}
+
+.menu-item:last-child {
+  border-bottom: none;
+}
+
+.menu-left {
+  display: block;
+  color: #0f172a;
+  font-size: 28rpx;
+  font-weight: 700;
+  margin-bottom: 8rpx;
+}
+
+.menu-desc {
+  display: block;
+  color: #64748b;
+  font-size: 22rpx;
+}
+
+.menu-right {
+  color: #0f766e;
+  font-size: 24rpx;
+  font-weight: 700;
+}
+
+.logout-btn {
+  margin-top: 28rpx;
+}

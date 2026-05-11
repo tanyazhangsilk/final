@@ -1,0 +1,80 @@
+<navigation-bar title="附近电站" back="{{false}}" color="black" background="#f4f8fb"></navigation-bar>
+<view class="stations-page">
+  <view class="search-card panel-card">
+    <view class="search-box">
+      <text class="search-icon">搜</text>
+      <input
+        class="search-input"
+        placeholder="搜索电站名称、地址或运营商"
+        value="{{keyword}}"
+        bindinput="onSearchInput"
+      />
+      <text class="clear-text" wx:if="{{keyword}}" bindtap="clearKeyword">清空</text>
+    </view>
+    <view class="sort-row">
+      <view
+        class="sort-item {{sortKey === item.key ? 'active' : ''}}"
+        wx:for="{{sortOptions}}"
+        wx:key="key"
+        data-key="{{item.key}}"
+        bindtap="selectSort"
+      >
+        {{item.label}}
+      </view>
+    </view>
+  </view>
+
+  <view class="result-tip" wx:if="{{!loading}}">共找到 {{displayStations.length}} 个站点</view>
+  <view class="empty-card" wx:if="{{empty}}">
+    <text class="empty-card__title">没有找到符合条件的电站</text>
+    <text class="empty-card__desc">试试更换关键词，或切换筛选条件查看其他优选站点。</text>
+  </view>
+
+  <scroll-view class="station-list" scroll-y type="list" wx:if="{{!empty}}">
+    <view class="station-card panel-card" wx:for="{{displayStations}}" wx:key="id" data-id="{{item.id}}" bindtap="onStationTap">
+      <view class="station-top">
+        <view class="station-title-wrap">
+          <text class="station-name">{{item.name}}</text>
+          <text class="station-address">{{item.address}}</text>
+        </view>
+        <view class="station-side">
+          <text class="station-distance">{{item.distance}}</text>
+          <text class="station-score">评分 {{item.score}}</text>
+        </view>
+      </view>
+
+      <view class="station-reasons">
+        <text class="reason-tag" wx:for="{{item.recommendReasons}}" wx:key="*this">{{item}}</text>
+      </view>
+
+      <view class="station-meta-grid">
+        <view class="meta-pill">
+          <text class="meta-label">运营商</text>
+          <text class="meta-value">{{item.operator}}</text>
+        </view>
+        <view class="meta-pill">
+          <text class="meta-label">当前电价</text>
+          <text class="meta-value">{{item.currentPriceText}}</text>
+        </view>
+        <view class="meta-pill">
+          <text class="meta-label">空闲枪口</text>
+          <text class="meta-value">{{item.available}} / {{item.total}}</text>
+        </view>
+        <view class="meta-pill">
+          <text class="meta-label">充电类型</text>
+          <text class="meta-value">{{item.chargeType}}</text>
+        </view>
+      </view>
+
+      <view class="station-bottom">
+        <view class="station-bottom-tags">
+          <text class="status-tag {{item.statusKey}}">{{item.statusText}}</text>
+          <text class="mini-tag">快充 {{item.fastCount}}</text>
+          <text class="mini-tag">慢充 {{item.slowCount}}</text>
+        </view>
+        <text class="station-link">站点详情</text>
+      </view>
+    </view>
+  </scroll-view>
+</view>
+<custom-tab-bar />

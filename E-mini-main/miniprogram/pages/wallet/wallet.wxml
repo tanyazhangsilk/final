@@ -1,0 +1,61 @@
+<navigation-bar title="" back="{{false}}" color="white" background="transparent"></navigation-bar>
+<scroll-view class="wallet-scroll" scroll-y type="list">
+  <view class="wallet-page">
+    <view class="balance-card panel-card">
+      <view class="balance-top">
+        <view>
+          <text class="balance-title">我的钱包</text>
+          <text class="balance-subtitle">账户余额、优惠权益与交易明细一站管理</text>
+        </view>
+        <view class="coupon-entry" bindtap="openCoupons">优惠券</view>
+      </view>
+      <text class="balance-amount">￥{{balance}}</text>
+      <view class="benefit-strip">
+        <text class="benefit-tag">充值满 100 元赠 12 元券</text>
+        <text class="benefit-text">夜间充电可叠加优惠</text>
+      </view>
+      <view class="button-row">
+        <view class="action-btn primary" bindtap="onRecharge">充值</view>
+        <view class="action-btn secondary" bindtap="onRefresh">更新余额</view>
+      </view>
+    </view>
+
+    <view class="record-card panel-card">
+      <view class="section-head">
+        <text class="section-head__title">交易记录</text>
+        <text class="section-head__meta">最近 {{displayRecords.length}} 条</text>
+      </view>
+
+      <view class="filter-row">
+        <view
+          class="filter-item {{currentFilter === item.key ? 'active' : ''}}"
+          wx:for="{{filters}}"
+          wx:key="key"
+          data-key="{{item.key}}"
+          bindtap="switchFilter"
+        >
+          {{item.label}}
+        </view>
+      </view>
+
+      <view class="empty-card inner-empty" wx:if="{{displayRecords.length === 0}}">
+        <text class="empty-card__title">暂无相关记录</text>
+        <text class="empty-card__desc">完成充值或充电消费后，资金变动会在这里展示。</text>
+      </view>
+
+      <view class="record-item" wx:for="{{displayRecords}}" wx:key="id">
+        <view class="record-left">
+          <text class="record-title">{{item.title}}</text>
+          <text class="record-time">{{item.time}} · {{item.channel}} · {{item.description}}</text>
+        </view>
+        <text class="record-amount {{item.type}}">{{item.amountText}}</text>
+      </view>
+    </view>
+
+    <view class="tips-card panel-card">
+      <text class="tips-title">充值说明</text>
+      <text class="tips-desc">钱包余额可用于充电订单结算，充值后金额即时到账，优惠券会在支付时自动优先抵扣。</text>
+    </view>
+  </view>
+</scroll-view>
+<custom-tab-bar />

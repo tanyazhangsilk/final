@@ -1,0 +1,105 @@
+<navigation-bar title="电站详情" back="{{true}}" color="white" background="transparent"></navigation-bar>
+<scroll-view class="detail-scroll" scroll-y type="list" wx:if="{{station}}">
+  <view class="detail-page">
+    <view class="hero-card panel-card">
+      <view class="hero-top">
+        <view class="hero-main">
+          <text class="station-name">{{station.name}}</text>
+          <text class="station-address">{{station.address}}</text>
+        </view>
+        <view class="hero-actions">
+          <text class="station-score">评分 {{station.score}}</text>
+          <view class="favorite-btn" bindtap="toggleFavorite">{{station.favorite ? '已收藏' : '收藏'}}</view>
+        </view>
+      </view>
+
+      <view class="hero-tags">
+        <text class="hero-tag" wx:for="{{station.tags}}" wx:key="*this">{{item}}</text>
+      </view>
+
+      <view class="hero-reasons">
+        <text class="reason-tag" wx:for="{{station.recommendReasons}}" wx:key="*this">{{item}}</text>
+      </view>
+
+      <view class="meta-grid">
+        <view class="meta-item">
+          <text class="meta-label">运营商</text>
+          <text class="meta-value">{{station.operator}}</text>
+        </view>
+        <view class="meta-item">
+          <text class="meta-label">距离</text>
+          <text class="meta-value">{{station.distance}}</text>
+        </view>
+        <view class="meta-item">
+          <text class="meta-label">营业时间</text>
+          <text class="meta-value">{{station.businessHours}}</text>
+        </view>
+        <view class="meta-item">
+          <text class="meta-label">空闲枪口</text>
+          <text class="meta-value">{{station.available}} / {{station.total}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="info-card panel-card">
+      <view class="section-head">
+        <text class="section-head__title">服务信息</text>
+        <text class="section-head__meta">{{station.chargeType}}</text>
+      </view>
+      <view class="info-row">
+        <text class="info-label">停车信息</text>
+        <text class="info-value">{{station.parkingTips}}</text>
+      </view>
+      <view class="info-row">
+        <text class="info-label">配套服务</text>
+        <text class="info-value">{{station.serviceTips}}</text>
+      </view>
+      <view class="info-row">
+        <text class="info-label">当前电价</text>
+        <text class="info-value">{{station.currentPriceText}}</text>
+      </view>
+    </view>
+
+    <view class="info-card panel-card">
+      <view class="section-head">
+        <text class="section-head__title">价格说明</text>
+        <text class="section-head__meta">峰平谷电价</text>
+      </view>
+      <view class="price-row" wx:for="{{station.priceBreakdown}}" wx:key="label">
+        <view>
+          <text class="price-label">{{item.label}}</text>
+          <text class="price-time">{{item.time}}</text>
+        </view>
+        <text class="price-value">{{item.price}}</text>
+      </view>
+    </view>
+
+    <view class="notice-card panel-card">
+      <view class="section-head">
+        <text class="section-head__title">站点公告</text>
+        <text class="section-head__meta">出行提醒</text>
+      </view>
+      <text class="notice-text">{{station.announcement}}</text>
+    </view>
+
+    <view class="info-card panel-card">
+      <view class="section-head">
+        <text class="section-head__title">充电终端</text>
+        <text class="section-head__meta">实时状态</text>
+      </view>
+      <view class="pile-card" wx:for="{{station.piles}}" wx:key="id" data-pile-no="{{item.id}}" data-sn-code="{{item.id}}" data-status="{{item.status}}" bindtap="onPileTap">
+        <view class="pile-main">
+          <text class="pile-name">{{item.label}}</text>
+          <text class="pile-meta">{{item.id}} · {{item.power}} · {{item.connector}}</text>
+          <text class="pile-queue">{{item.queueText}}</text>
+        </view>
+        <text class="status-tag {{item.status === 'idle' ? 'idle' : item.status === 'busy' ? 'charging' : 'fault'}}">{{item.statusText}}</text>
+      </view>
+    </view>
+  </view>
+</scroll-view>
+
+<view class="bottom-bar" wx:if="{{station}}">
+  <button class="btn-secondary" bindtap="goNavigate">导航前往</button>
+  <button class="btn-primary" bindtap="goCharge">立即充电</button>
+</view>

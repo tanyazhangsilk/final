@@ -1,0 +1,52 @@
+<navigation-bar title="运营商入驻申请" back="{{false}}" color="white" background="transparent"></navigation-bar>
+<view class="apply-page">
+  <view class="hero-card">
+    <text class="hero-title">申请成为运营商</text>
+    <text class="hero-desc">提交入驻申请后，平台管理员将在审核通过后为您开通运营商权限。</text>
+  </view>
+
+  <view class="form-card panel-card">
+    <view class="form-group">
+      <text class="form-label">运营商名称 *</text>
+      <input class="form-input" placeholder="请输入运营商名称" value="{{operatorName}}" bindinput="onInput" data-field="operatorName" />
+    </view>
+    <view class="form-group">
+      <text class="form-label">公司名称</text>
+      <input class="form-input" placeholder="请输入公司名称" value="{{companyName}}" bindinput="onInput" data-field="companyName" />
+    </view>
+    <view class="form-group">
+      <text class="form-label">联系人 *</text>
+      <input class="form-input" placeholder="请输入联系人姓名" value="{{contactName}}" bindinput="onInput" data-field="contactName" />
+    </view>
+    <view class="form-group">
+      <text class="form-label">联系电话 *</text>
+      <input class="form-input" placeholder="请输入联系电话" value="{{phone}}" bindinput="onInput" data-field="phone" type="number" />
+    </view>
+    <view class="form-group">
+      <text class="form-label">电子邮箱</text>
+      <input class="form-input" placeholder="请输入电子邮箱" value="{{email}}" bindinput="onInput" data-field="email" type="text" />
+    </view>
+    <view class="form-group">
+      <text class="form-label">服务区域</text>
+      <input class="form-input" placeholder="例如：成都市高新区" value="{{region}}" bindinput="onInput" data-field="region" />
+    </view>
+    <view class="form-group">
+      <text class="form-label">注册地址</text>
+      <input class="form-input" placeholder="请输入注册地址" value="{{address}}" bindinput="onInput" data-field="address" />
+    </view>
+    <view class="form-group">
+      <text class="form-label">统一社会信用代码</text>
+      <input class="form-input" placeholder="请输入信用代码" value="{{creditCode}}" bindinput="onInput" data-field="creditCode" />
+    </view>
+    <view class="form-group">
+      <text class="form-label">业务描述</text>
+      <textarea class="form-textarea" placeholder="请描述您的业务范围和运营计划" value="{{description}}" bindinput="onInput" data-field="description"></textarea>
+    </view>
+    <view class="form-group">
+      <text class="form-label">计划运营电站数量</text>
+      <input class="form-input" placeholder="0" value="{{stationCount}}" bindinput="onInput" data-field="stationCount" type="number" />
+    </view>
+
+    <button class="btn-submit" bindtap="onSubmit" loading="{{submitting}}" disabled="{{submitting}}">提交申请</button>
+  </view>
+</view>
